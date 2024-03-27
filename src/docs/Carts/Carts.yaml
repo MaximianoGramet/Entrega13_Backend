@@ -9,26 +9,26 @@ paths:
       tags:
         - Carts
       responses:
-        '200':
+        "200":
           description: Retorna la lista de carritos exitosamente.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: './models/cart.model.js'
+                  $ref: "./models/cart.model.js"
 
     post:
       summary: Crea un nuevo Carrito
       tags:
         - Carts
       responses:
-        '200':
+        "200":
           description: Retorna el carrito creado exitosamente.
           content:
             application/json:
               schema:
-                $ref: './models/cart.model.js'
+                $ref: "./models/cart.model.js"
 
   /api/carts/{cid}:
     get:
@@ -43,12 +43,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Retorna el carrito encontrado exitosamente.
           content:
             application/json:
               schema:
-                $ref: './models/cart.model.js'
+                $ref: "./models/cart.model.js"
 
     put:
       summary: Actualiza un Carrito por ID
@@ -83,12 +83,12 @@ paths:
                   required:
                     - quantity
   responses:
-    '200':
+    "200":
       description: Retorna el carrito actualizado exitosamente.
       content:
         application/json:
           schema:
-            $ref: './models/cart.model.js'
+            $ref: "./models/cart.model.js"
 
     delete:
       summary: Elimina un Carrito por ID
@@ -102,7 +102,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Retorna el carrito eliminado exitosamente.
 
   /api/carts/{cid}/purchase:
@@ -118,12 +118,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Retorna el ticket de compra generado exitosamente.
           content:
             application/json:
               schema:
-                $ref: './Services/ticket.dao.js'
+                $ref: "./Services/ticket.dao.js"
 
   /api/carts/{cid}/products/{pid}:
     delete:
@@ -144,7 +144,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Retorna un mensaje indicando que el producto fue eliminado exitosamente del carrito.
 
     put:
@@ -175,23 +175,8 @@ paths:
                   type: integer
                   description: Nueva cantidad del producto en el carrito
       responses:
-        '200':
+        "200":
           description: Retorna un mensaje indicando que la cantidad del producto en el carrito fue actualizada exitosamente.
-  /api/carts/clear/{cid}:
-    delete:
-      summary: Elimina todos los productos del Carrito
-      tags:
-        - Carts
-      parameters:
-        - in: path
-          name: cid
-          required: true
-          description: ID del carrito
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Retorna un mensaje indicando que todos los productos fueron eliminados exitosamente del carrito.
     post:
       summary: Agrega un producto al Carrito
       tags:
@@ -210,7 +195,21 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Retorna un mensaje indicando que el producto fue agregado exitosamente al carrito.
 
-
+  /api/carts/clear/{cid}:
+    delete:
+      summary: Elimina todos los productos del Carrito
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Retorna un mensaje indicando que todos los productos fueron eliminados exitosamente del carrito.
